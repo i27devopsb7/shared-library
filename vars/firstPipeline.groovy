@@ -27,7 +27,7 @@ def call(Map pipelineParams){
             stage('Build') {
                 steps {
                     echo "***** Building the applicaiton ******"
-                    echo "********* I am building for ${env.APPLICATION_NAME}"
+                    echo "********* Now Building ${env.APPLICATION_NAME} application"
                 }
             }
             stage ('test'){

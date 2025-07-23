@@ -7,8 +7,15 @@ def call(Map pipelineParams){
         agent {
             label 'java-slave'
         }
+        // ${ENV_NAME}
+        // ${env.ENV_NAME}
+        // ${pipelineParams.appName}
+        // ${params.param_name}
+        environment {
+            APPLICATION_NAME  = "${pipelineParams.appName}"
+        }
         stages {
-            stage ('calulate'){
+            stage ('calculate'){
                 steps {
                     script {
                         echo "**** Calling add method for reusability *****"
@@ -20,6 +27,7 @@ def call(Map pipelineParams){
             stage('Build') {
                 steps {
                     echo "***** Building the applicaiton ******"
+                    echo "********* I am building for ${env.APPLICATION_NAME}"
                 }
             }
             stage ('test'){
